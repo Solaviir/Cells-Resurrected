@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#Jay, don't mind all the comments yet, just wandering through asking questions to get my bearings. I'll probably
+#figure most of it out on my own, so don't feel compelled to explain all the simple bits
 
-import ConfigParser
+import ConfigParser #module is configparser in Py3. 
 import random
 import sys
 import time
@@ -13,7 +14,7 @@ from terrain.generator import terrain_generator
 if not pygame.font: print 'Warning, fonts disabled'
 
 try:
-    import psyco
+    import psyco #what is psyco, and if it could be ignored in the original build, do we care about it here?
     psyco.full()
 except ImportError:
     pass
@@ -25,7 +26,7 @@ def get_mind(name):
     mind = sys.modules[full_name]
     mind.name = name
     return mind
-
+# this... loads a given mind, based on it's name?
 
 
 STARTING_ENERGY = 20
@@ -59,13 +60,13 @@ SPAWN_TOTAL_ENERGY = BODY_ENERGY + SPAWN_LOST_ENERGY
 
 TIMEOUT = None
 
-config = ConfigParser.RawConfigParser()
+config = ConfigParser.RawConfigParser() #thefuckisthis
 
 
 def get_next_move(old_x, old_y, x, y):
     ''' Takes the current position, old_x and old_y, and a desired future position, x and y,
     and returns the position (x,y) resulting from a unit move toward the future position.'''
-    dx = numpy.sign(x - old_x)
+    dx = numpy.sign(x - old_x) #what does numpy.sign do?
     dy = numpy.sign(y - old_y)
     return (old_x + dx, old_y + dy)
 
@@ -709,7 +710,7 @@ def main():
         symmetric = config.getboolean('terrain', 'symmetric')
         minds_str = str(config.get('minds', 'minds'))
     except Exception as e:
-        print 'Got error: %s' % e
+        print 'Got error: %s' % e 
         config.add_section('minds')
         config.set('minds', 'minds', 'mind1,mind2')
         config.add_section('terrain')
