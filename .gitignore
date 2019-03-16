@@ -1,2 +1,5 @@
 # mypy generated files
 .mypy_cache
+
+# pycache
+__pycache__

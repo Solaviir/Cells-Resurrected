@@ -1,6 +1,6 @@
 import config
-from Position import Position
-import random
+from cells.models.Position import Position
+from random import randint
 
 
 class Plant:
@@ -13,8 +13,8 @@ class Plant:
         self.energy: int = config.PLANT_STARTING_ENERGY
         self.position: Position = position
         self.energry_recovery_rate: int = config.BASE_RECOVERY_RATE + \
-            random.randint(config.RECOVERY_DEVIATION * -1,
-                           config.RECOVERY_DEVIATION)
+            randint(config.RECOVERY_DEVIATION * -1,
+                    config.RECOVERY_DEVIATION)
 
     def increment_turn(self):
         self.energy = min(self.energry_recovery_rate +
