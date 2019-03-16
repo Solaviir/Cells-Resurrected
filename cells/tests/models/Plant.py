@@ -2,6 +2,8 @@ import unittest
 import config
 from cells.models.Plant import Plant
 from cells.models.Position import Position
+# From root of project, can run unit tests by
+# 'python -m unittest cells/tests/models/Plant.py'
 
 
 class TestPlant(unittest.TestCase):
@@ -18,8 +20,8 @@ class TestPlant(unittest.TestCase):
         new_plant: Plant = Plant(Position(7, 20))
         old_energy: int = new_plant.energy
         new_plant.increment_turn()
-        self.assertEqual(new_plant.energy, old_energy +
-                         new_plant.energry_recovery_rate)
+        self.assertEqual(new_plant.energy, old_energy
+                         + new_plant.energry_recovery_rate)
 
 
 if __name__ == '__main__':
